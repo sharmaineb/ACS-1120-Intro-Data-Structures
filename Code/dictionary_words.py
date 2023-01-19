@@ -9,5 +9,5 @@ def random_dictionary_words(word_amount, dictionary_file):
         return print(output)
 
 if __name__ == "__main__":
-    random_dictionary_words(int(sys.argv[1]), '/usr/share/dict/words')
+    random_dictionary_words(int(sys.argv[1]), '/usr/share/dict/words') 
     
