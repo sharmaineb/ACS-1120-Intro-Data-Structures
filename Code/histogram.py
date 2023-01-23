@@ -48,5 +48,5 @@ def histogram_book_tuple(source_text):
 
 if __name__ == "__main__":
     histogram("book.txt")
-    #histogram_book_tuple("sample.txt")
+    #histogram_book_tuple("book.txt")
     
