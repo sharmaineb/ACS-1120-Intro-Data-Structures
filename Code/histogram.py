@@ -39,8 +39,8 @@ def histogram_book_tuple(source_text):
         book_text = book_content.read().split()
     for word in range(len(book_text)):
         histogram_book_tuple.append((book_text[word], book_text.count(book_text[word])))
-    print(histogram_book_tuple)
-    return histogram_book_tuple
+    return print(histogram_book_tuple)
+    
 
 if __name__ == "__main__":
     histogram("book.txt")
