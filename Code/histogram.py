@@ -35,13 +35,17 @@ def frequency(word, histogram):
     print(word_frequency)
     return word_frequency
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~ TUPLE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# tuple
+
 def histogram_book_tuple(source_text):
     # start with an empty dictionary
     histogram_book_tuple = []
     # splits text file into words/ returns list of strings
     with open(source_text) as book_content:
         book_text = book_content.read().split()
+    for word in range(len(book_text)):
+        histogram_book_tuple.append((book_text)[word], book_text.count(book_text[word]))
+        return histogram_book_tuple
 
 
 
@@ -49,6 +53,6 @@ def histogram_book_tuple(source_text):
 
 
 if __name__ == "__main__":
-    histogram("book.txt")
-    #histogram_book_tuple("sample.txt")
+    # histogram("book.txt")
+    histogram_book_tuple("book.txt")
     
