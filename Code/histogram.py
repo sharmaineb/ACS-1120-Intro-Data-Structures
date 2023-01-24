@@ -10,9 +10,16 @@ def histogram(source_text):
             else:
                 histogram_dict[word] = 1
         return print(histogram_dict)
+# def histogram(filename):
+#     histogram_dict = {}
+#     with open(filename) as book_source: 
+#         book_content = book_source.read()
+#         book_text = book_content.split()
+#         for word in book_text:
+#             word_count = histogram_dict.get(word, 0) + 1
+#             histogram_dict[word] = word_count
+#         return print(histogram_dict)
         
-
-
 # unique_words() function that takes a histogram argument
 def unique_words(histogram):
     unique_word_count = 0
@@ -21,10 +28,8 @@ def unique_words(histogram):
 
     return print(unique_word_count)
     
-
-
-# # frequency() function that takes a word and histogram argument
-# # returns the total count of unique words in the histogram
+# frequency() function that takes a word and histogram argument
+# returns the total count of unique words in the histogram
 def frequency(word, histogram):
     for word in histogram.word_count():
         if word == word:
@@ -32,14 +37,15 @@ def frequency(word, histogram):
 
     return print(word_frequency) 
 
-# tuple
-def histogram_book_tuple(source_text):
-    histogram_book_tuple = []
-    with open(source_text) as book_content:
-        book_text = book_content.read().split()
-    for word in range(len(book_text)):
-        histogram_book_tuple.append((book_text[word], book_text.count(book_text[word])))
-    return print(histogram_book_tuple)
+
+# # tuple
+# def histogram_book_tuple(filename):
+#     histogram_book_tuple = []
+#     with open(filename) as book_content:
+#         book_text = book_content.read().split()
+#     for word in range(len(book_text)):
+#         histogram_book_tuple.append((book_text[word], book_text.count(book_text[word])))
+#     return print(histogram_book_tuple)
     
 
 if __name__ == "__main__":
