@@ -10,6 +10,7 @@ def histogram(source_text):
             else:
                 histogram_dict[word] = 1
         return print(histogram_dict)
+
 # def histogram(filename):
 #     histogram_dict = {}
 #     with open(filename) as book_source: 
@@ -49,7 +50,8 @@ def frequency(word, histogram):
     
 
 if __name__ == "__main__":
-    histogram("book.txt")
+    histogram("fish_example.txt")
+    # histogram("book.txt")
     # histogram_book_tuple("book.txt")
 
     
