@@ -23,20 +23,23 @@ def histogram(source_text):
         
 # unique_words() function that takes a histogram argument
 def unique_words(histogram):
-    unique_word_count = 0
-    for each in histogram.word_count():
-        unique_word_count += 1
+    # unique_word_count = 0
+    # for each in histogram.word_count():
+    #     unique_word_count += 1
+    return len(histogram.items())
 
-    return print(unique_word_count)
+    
     
 # frequency() function that takes a word and histogram argument
 # returns the total count of unique words in the histogram
 def frequency(word, histogram):
-    for word in histogram.word_count():
-        if word == word:
-            word_frequency = histogram[word]
+    # for word in histogram.word_count():
+    #     if word == word:
+    #         word_frequency = histogram[word]
+    if word not in histogram:
+        return("Word Not Found in Histogram.")
 
-    return print(word_frequency) 
+    return print(histogram[word])
 
 
 # # tuple
