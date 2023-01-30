@@ -1,45 +1,51 @@
 # histogram() function that takes a source_text argument
-histogram_dict = {}
 
 def generate_histogram(filename):
     with open(filename) as file:
         words = file.read().split()
+        histogram = {}
         for word in words:
-            if word in histogram_dict:
-                histogram_dict[word] += 1
+            if word in histogram:
+                histogram[word] += 1
             else:
-                histogram_dict[word] = 1
-        for key in list(histogram_dict.keys()):
-            print(key, ":", histogram_dict[key])
-        return print(histogram_dict)
-
-        
-# unique_words() function that takes a histogram argument
-def unique_words(histogram_dict):
-    unique_word_count = len(histogram_dict)
-    return unique_word_count
+                histogram[word] = 1
+        for key in list(histogram.keys()):
+            print(key, ":", histogram[key])
     
+        return histogram
+
+# unique_words() function that takes a histogram argument
+
+def unique_words(histogram):
+    unique_word_count = len(histogram)
+    return unique_word_count
+
 # frequency() function that takes a word and histogram argument
 # returns the total count of unique words in the histogram
-def frequency(word, histogram_dict):
-    frequent_words = histogram_dict[word]
+
+def frequency(word, histogram):
+    frequent_words = histogram[word]
     return frequent_words
 
 # tuple
-def histogram_book_tuple(filename):
-    histogram_book_tuple = []
-    with open(filename) as book_content:
-        book_text = book_content.read().split()
-    for word in range(len(book_text)):
-        histogram_book_tuple.append((book_text[word], book_text.count(book_text[word])))
-    return print(histogram_book_tuple)
-    
+def histogram_tuple(filename):
+    histogram_tuple = []
+    with open(filename) as file:
+        words = file.read().split()
+    for word in range(len(words)):
+        histogram_tuple.append((words[word], words.count(words[word])))
+    return print(histogram_tuple)
 
 if __name__ == "__main__":
-    generate_histogram('fish_example.txt')
-    unique_words(histogram_dict)
-    # generate_histogram("book.txt")
-    # generate_histogram_book_tuple("book.txt")
+    histogram = generate_histogram("fish_example.txt")
+    print(histogram)
+    print(unique_words(histogram))
+    histogram_tuple("fish_example.txt")
+    # histogram = generate_histogram("book.txt")
+    # print(histogram)
+    # print(unique_words(histogram))
+    # histogram_tuple("book.txt")
+    
 
 # attempts:
 
