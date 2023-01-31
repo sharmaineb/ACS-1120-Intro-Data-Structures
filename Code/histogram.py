@@ -1,10 +1,13 @@
+# opens and reads file
+def read_souce(filename):
+    with open (filename) as text:
+        word_list = text.read().split()
+    return word_list
+    
 # histogram() function that takes a source_text argument
-
-def generate_histogram(filename):
-    with open(filename) as file:
-        words = file.read().split()
+def generate_histogram(word_list):
         histogram = {}
-        for word in words:
+        for word in word_list:
             if word in histogram:
                 histogram[word] += 1
             else:
@@ -41,6 +44,7 @@ if __name__ == "__main__":
     print(histogram)
     print(unique_words(histogram))
     histogram_tuple("fish_example.txt")
+
     # histogram = generate_histogram("book.txt")
     # print(histogram)
     # print(unique_words(histogram))
