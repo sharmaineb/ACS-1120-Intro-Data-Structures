@@ -23,17 +23,17 @@ class Listogram(list):
         # TODO: Increase word frequency by count
         # Return the index of entry containing given target word if found in this histogram, 
         # or None if target word is not found.
-        index = self.index_of(word)
+        words = self.index_of(word)
         self.tokens += count
-        if index != None:
-            self[index][1] += count
+        if words != None:
+            self[words][1] += count
         else: self.types += 1
         self.append([word, count])
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
         # TODO: Retrieve word frequency count
-        index = self.index_of(word.lower())
+        index = self.index_of(word)
         if index != None:
             return self[index][1]
         else:
@@ -63,7 +63,7 @@ class Listogram(list):
         # TODO: Randomly choose a word based on its frequency in this histogram
         distance = 0
         dart = random.uniform(0, self.tokens)
-        for word, count in self:
+        for word, count in self.items():
             distance += count
             if distance >= dart:
                 return word
