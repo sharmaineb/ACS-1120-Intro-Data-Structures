@@ -28,7 +28,7 @@ def output_random(histogram, word_amount):
 
 if __name__ == '__main__':
     file = sys.argv[1]
-    histogram = generate_histogram("./data/sample.txt")
+    histogram = generate_histogram("./data/b99.txt")
     print(word_count(histogram))
 
 
