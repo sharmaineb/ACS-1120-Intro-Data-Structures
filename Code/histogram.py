@@ -40,10 +40,10 @@ def histogram_tuple(filename):
     return print(histogram_tuple)
 
 if __name__ == "__main__":
-    histogram = generate_histogram("b99.txt")
+    histogram = generate_histogram("./data/sample.txt")
     print(histogram)
     print(unique_words(histogram))
-    histogram_tuple("b99.txt")
+    histogram_tuple("./data/sample.txt")
 
     # histogram = generate_histogram("book.txt")
     # print(histogram)
