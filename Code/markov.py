@@ -2,7 +2,9 @@ from dictogram import Dictogram
 from histogram import read_souce, generate_histogram
 import random
 
-
+class Markov():
+    def __init__(self, word_list):
+        
 
 
 
