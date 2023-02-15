@@ -54,6 +54,12 @@ class LinkedList:
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(n) Why and under what conditions?"""
         # TODO: Loop through all nodes and count one for each
+        count = 0
+        node = self.head
+        while node != None:
+            count += 1
+            node = node.next
+        return count
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
@@ -61,18 +67,35 @@ class LinkedList:
         # TODO: Create new node to hold given item
         # TODO: If self.is_empty() == True set the head and the tail to the new node
         # TODO: Else append node after tail
+        node = Node(item)
+        if self.is_empty() == True:
+            self.head = node
+        else:
+            self.tail.next = node
+        self.tail = node
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
+        node = Node(item)
+        if self.is_empty():
+            self.tail = node
+        else:
+            node.next = self.head
+        self.head = node
 
     def find(self, matcher):
         """Return an item from this linked list if it is present.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item, if present return True otherwise False
+        for node in self.matcher():
+            if matcher == node:
+                return True
+        return False
+
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
@@ -82,6 +105,27 @@ class LinkedList:
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
+        node = self.head
+        previous_node = None
+        found_node = False
+        while node != None:
+            if node.data == item:
+                found_node = True
+                if node == self.head:
+                    if node.next == None:
+                        self.head = None
+                        self.tail = None
+                    else:
+                        self.head = node.next
+                elif node == self.tail:
+                    previous_node.next = None
+                    self.tail = previous_node
+                else:
+                    previous_node.next = node.next
+            previous_node = node
+            node = node.next
+        if found_node == False:
+            raise ValueError("Item not found: {}".format(item))
 
 
 def test_linked_list():
