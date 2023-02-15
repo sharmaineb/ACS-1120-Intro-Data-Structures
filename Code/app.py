@@ -1,6 +1,6 @@
 """Main script, uses other modules to generate sentences."""
 from flask import Flask
-from histogram import read_souce
+from histogram import read_source
 from sample import output_random
 
 
@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
-    word_source = read_souce("b99.txt")
+    word_source = read_source("b99.txt")
     output_sentence = output_random(word_source, 80)
     return output_sentence
 

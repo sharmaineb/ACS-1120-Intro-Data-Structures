@@ -1,9 +1,16 @@
-from dictogram import Dictogram
-from histogram import read_souce, generate_histogram
 import random
 
 class Markov():
     def __init__(self, word_list):
+        self.word_list = word_list.read_source(word_list)
+        markov_dict = {}
+        word_sequence = range(len(word_list) - 1)
+        
+
+
+            
+
+
         
 
 
@@ -18,5 +25,5 @@ class Markov():
 
 # use functions to create markov -- create class 
 # use a dictionary as a start and pass in txt
-# iterate/loop over source text/corpus 
-# implement tuples
+# iterate/loop over source text/corpus; 
+# append
