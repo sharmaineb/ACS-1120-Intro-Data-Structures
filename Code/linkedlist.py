@@ -55,10 +55,8 @@ class LinkedList:
         TODO: Running time: O(n) Why and under what conditions?"""
         # TODO: Loop through all nodes and count one for each
         count = 0
-        node = self.head
-        while node != None:
+        for item in self.items():
             count += 1
-            node = node.next
         return count
 
     def append(self, item):
@@ -70,9 +68,10 @@ class LinkedList:
         node = Node(item)
         if self.is_empty() == True:
             self.head = node
+            self.tail = node
         else:
             self.tail.next = node
-        self.tail = node
+            self.tail = node
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
@@ -80,11 +79,12 @@ class LinkedList:
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
         node = Node(item)
-        if self.is_empty():
+        if self.is_empty() == True:
             self.tail = node
+            self.head = node
         else:
             node.next = self.head
-        self.head = node
+            self.head = node
 
     def find(self, matcher):
         """Return an item from this linked list if it is present.
@@ -92,16 +92,11 @@ class LinkedList:
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item, if present return True otherwise False
         node = self.head
-        while node != None:
+        while node is not None:
             if matcher in node.data:
                 return True
             node = node.next
         return False
-        # for node in self.matcher():
-        #     if matcher == node:
-        #         return True
-        # return False
-
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
@@ -132,6 +127,14 @@ class LinkedList:
             node = node.next
         if found_node == False:
             raise ValueError("Item not found: {}".format(item))
+    
+    def replace(self, first_node, next_node):
+        node = self.head
+        while node is not None:
+            if node.data == first_node:
+                node.data = next_node
+                return
+            node = node.next
 
 
 def test_linked_list():
