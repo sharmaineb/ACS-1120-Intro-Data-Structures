@@ -43,11 +43,11 @@ class HashTable(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all buckets
         # TODO: Collect all values in each bucket
-        all_keys = []
+        all_values = []
         for bucket in self.buckets:
             for key, value in bucket.items():
-                all_keys.append(value)
-        return all_keys
+                all_values.append(value)
+        return all_values
 
     def items(self):
         """Return a list of all items (key-value pairs) in this hash table.
@@ -73,15 +73,11 @@ class HashTable(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
-        if key in self.keys():
-            return True
-        else:
-            return False
-        # for bucket in self.buckets:
-        #     for bucket_key, value in bucket.items():
-        #         if bucket_key == key:
-        #             return True
-        # return False
+        for bucket in self.buckets:
+            for bucket_key, value in bucket.items():
+                if bucket_key == key:
+                    return True
+        return False
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
@@ -97,13 +93,6 @@ class HashTable(object):
             if bucket[0] == key:
                 return bucket[1]
         raise KeyError('Key not found: {}'.format(key))
-        
-        # given = self._bucket_index(key)
-        # buckets = self.buckets[given].items()
-        # for bucket in buckets:
-        #     if bucket[0] == key:
-                # return bucket[1]
-        # raise KeyError('Key not found: {}'.format(key))
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
