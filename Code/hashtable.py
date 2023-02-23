@@ -92,14 +92,12 @@ class HashTable(object):
         # TODO: Otherwise, raise error to tell user get failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
         index = self._bucket_index(key)
-        bucket = self.buckets[index]
-        entry = bucket.find_if_matches(lambda entry: entry[0] == key)
-        if entry:
-            value = entry[1]
-            return value
-        else:
-            raise KeyError('Key not found: {}'.format(key))
-
+        buckets = self.buckets[index].items()
+        for bucket in buckets:
+            if bucket[0] == key:
+                return bucket[1]
+        raise KeyError('Key not found: {}'.format(key))
+        
         # given = self._bucket_index(key)
         # buckets = self.buckets[given].items()
         # for bucket in buckets:
@@ -116,15 +114,11 @@ class HashTable(object):
         # TODO: Otherwise, insert given key-value entry into bucket
         index = self._bucket_index(key)
         bucket = self.buckets[index]
-        entry = bucket.find(lambda entry: entry[0] == key)
-        new_node = (key,value)
-        if entry:
-            bucket.replace_node(new_node)
-        else:
-            bucket.append(new_node)
-        # if entry is not None:
-        #     bucket.delete(entry)
-        # bucket.append((key, value))
+        for bucket_key, bucket_value in bucket.items():
+            if bucket_key == key:
+                bucket.replace((bucket_key, bucket_value), (key, value))
+                return
+        bucket.append((key, value))
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
@@ -136,12 +130,11 @@ class HashTable(object):
         # Hint: raise KeyError('Key not found: {}'.format(key))
         index = self._bucket_index(key)
         bucket = self.buckets[index]
-        entry = bucket.find_if_matches(lambda entry: entry[0] == key)
-        print(entry)
-        if entry:
-            bucket.delete(entry)
-        else:
-            raise KeyError('Key not found: {}'.format(key))
+        for bucket_key, bucket_value in bucket.items():
+            if bucket_key == key:
+                bucket.delete((bucket_key, bucket_value))
+                return
+        raise KeyError('Key not found: {}'.format(key))
 
 def test_hash_table():
     ht = HashTable()

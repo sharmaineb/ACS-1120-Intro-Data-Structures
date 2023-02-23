@@ -136,14 +136,6 @@ class LinkedList:
             node = node.next
         if if_found == False:
             raise ValueError("Item not found: {}".format(item))
-    
-    # def replace(self, first_node, next_node):
-    #     node = self.head
-    #     while node is not None:
-    #         if node.data == first_node:
-    #             node.data = next_node
-    #             return
-    #         node = node.next
 
 
 def test_linked_list():
