@@ -14,7 +14,7 @@ app = Flask(__name__)
 def home():
     """Route that returns a web page containing the generated text."""
     word_source = read_source("./data/b99.txt")
-    output_sentence = output_random(word_source, 80)
+    output_sentence = output_random(word_source, 15)
     return output_sentence
 
 
