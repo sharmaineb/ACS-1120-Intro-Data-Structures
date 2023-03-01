@@ -1,21 +1,24 @@
 """Main script, uses other modules to generate sentences."""
-from flask import Flask
-from histogram import read_source
-from sample import output_random
+from flask import Flask, render_template
+from markov import Markov
 
 
 app = Flask(__name__)
 
-# TODO: Initialize your histogram, hash table, or markov chain here.
-# Any code placed here will run only once, when the server starts.
-
+source_text = "./data/b99.txt"
+markov = Markov(source_text)
+amount = 15
 
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
-    word_source = read_source("./data/b99.txt")
-    output_sentence = output_random(word_source, 15)
-    return output_sentence
+    sentence = markov.sentence(amount)
+
+    context = {
+        "sentence": sentence
+    }
+    
+    return render_template("index.html", **context)
 
 
 if __name__ == "__main__":
