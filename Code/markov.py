@@ -13,7 +13,7 @@ class Markov():
         word_list = self.word_list
         words = []
         for word in word_list:
-            if word[0].isupper() and word[-1] not in [".", "?", "!"]:
+            if word[0].isupper() and word[-1] not in [".", "?", "!", ","]:
                 words.append(word) 
         return random.choice(words)
 

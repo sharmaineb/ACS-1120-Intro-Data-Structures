@@ -2,23 +2,16 @@
 from flask import Flask, render_template
 from markov import Markov
 
-
 app = Flask(__name__)
-
-source_text = "./data/b99.txt"
-markov = Markov(source_text)
-amount = 15
 
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
-    sentence = markov.sentence(amount)
-
-    context = {
-        "sentence": sentence
-    }
+    source_text = "./data/b99.txt"
+    markov = Markov(source_text)
+    sentence = markov.sentence(15)
     
-    return render_template("index.html", **context)
+    return render_template("index.html", sentence=sentence)
 
 
 if __name__ == "__main__":
