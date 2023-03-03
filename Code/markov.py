@@ -6,15 +6,14 @@ class Markov():
 
     def read_source(self, word_list):
         with open(str(word_list)) as text:
-            text = text.read()
-            text = text.split()
+            text = text.read().split()
         return text
 
     def start(self):
         word_list = self.word_list
         words = []
         for word in word_list:
-            if word[0].isupper() == True:
+            if word[0].isupper() and word[-1] not in [".", "?", "!"]:
                 words.append(word) 
         return random.choice(words)
 
@@ -22,7 +21,7 @@ class Markov():
         word_list = self.word_list
         words = []
         for word in word_list:
-            if word[-1] == "." or word[-1] == "?" or word[-1] == "!":
+            if word[-1] in [".", "?", "!"]:
                 words.append(word)
         return random.choice(words)
 
