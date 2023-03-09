@@ -50,38 +50,3 @@ if __name__ == "__main__":
     # print(unique_words(histogram))
     # histogram_tuple("./data/b99.txt")
     
-
-# attempts:
-
-# def histogram(source_text):
-#     histogram_dict = {}
-#     with open(source_text) as book_source: 
-#         book_content = book_source.read()
-#         book_text = book_content.split()
-#         for word in book_text:
-#             if word in histogram_dict:
-#                 histogram_dict[word] += 1
-#             else:
-#                 histogram_dict[word] = 1
-#         return print(histogram_dict)
-
-# for key in histogram:
-#     if histogram[key] == 1:
-#         unique_word_count += 1
-# return len(unique_word_count)
-# unique_word_count = 0
-# for key in histogram:
-#     if histogram[key] == 1:
-#         unique_word_count += 1
-# return unique_word_count
-
-# if word in histogram.keys():
-#     return histogram[word]
-# return 0
-# for word in histogram.word_count():
-#     if word == word:
-#         word_frequency = histogram[word]
-# if word not in histogram:
-#     return("Word Not Found in Histogram.")
-
-# return print(histogram[word])
